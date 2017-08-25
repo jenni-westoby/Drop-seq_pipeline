@@ -15,15 +15,13 @@ To run the pipeline:
 1. Follow the instructions from the Drop-seq Alignment Cookbook (http://mccarrolllab.com/wp-content/uploads/2016/03/Drop-seqAlignmentCookbookv1.2Jan2016.pdf) to generate a Digital Gene Expression (DGE) matrix. Make sure you keep the bamfile you used to generate the DGE matrix. Put the cell barcodes (the column names in the DGE matrix) into a text file with one barcode per line.
 
 2. Use the following command to demultiplex the data:
-```
-while read i;
-do
-  samtools view path/to/bamfile/used/to/make/DGE | grep "XC:Z:"$i | cat path/to/header.sam - | samtools view -Sb - > path/to/output/directory/$i".bam"
-done < path/to/cell/barcodes/text/file
-```
-Replace the paths with the correct paths for your data. If you are demultiplexing over 1000 cells, consider directing the output into multiple directories. You can speed up the demultiplexing process by parallelising it. You will need a header for your bamfiles - for convenience one is included in this directory (header.sam). The output of this command is one aligned bamfile per cell.
-
-3. Convert selected bamfiles to fastq
+  ```
+  while read i;
+  do
+    samtools view path/to/bamfile/used/to/make/DGE | grep "XC:Z:"$i | cat path/to/header.sam - | samtools view -Sb - > path/to/output/directory/$i".bam"
+  done < path/to/cell/barcodes/text/file
+  ```
+  Replace the paths with the correct paths for your data. If you are demultiplexing over 1000 cells, consider directing the   output into multiple directories. You can speed up the demultiplexing process by parallelising it. You will need a header for   your bamfiles - for convenience one is included in this directory (header.sam). The output of this command is one aligned   bamfile per cell.
 
 4. Execute ./setup.sh setup. This will create a new directory called Simulation into which all the software required for this pipeline will be locally installed. In addition, empty directories are created within the Simulation directory which will eventually contain the RSEM references, various indices, the raw and simulated data, results matrices and graphs. This step will take ~30 minutes - 1 hour depending on your network speed.
 
