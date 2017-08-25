@@ -11,7 +11,7 @@ run_simulations(){
   fi
   memory=`pwd`
   cd $1
-  for i in $(find . -name '*.fastq*' -o -name '*.fq*');
+  for i in $(find . -name '*.bam');
   do
     base=`echo $i |awk -F/ '{print $2}'`
     filename=`echo $base |awk -F_ '{print $1}'`
@@ -45,6 +45,9 @@ simulate() {
  ./Simulation/RSEM-1.3.0/rsem-calculate-expression --star-gzipped-read-file --star\
        --star-path Simulation/STAR/bin/Linux_x86_64/ \
        -p 8 \
+       --bam \
+       --fragment-length-mean \
+       --fragment-length-sd
                    --estimate-rspd \
                    --append-names \
                    --output-genome-bam \
