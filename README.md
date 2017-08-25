@@ -1,4 +1,4 @@
-# Benchmarking_pipeline
+# Drop-seq_pipeline
 
 Prerequisites:
 
@@ -11,6 +11,8 @@ Prerequisites:
 -directory containing single cell RNA-seq data. This data should be demultiplexed, have any adaptors trimmed and should be in the format of gzipped fastq files.
 
 To run the pipeline:
+
+1. Follow the instructions from the Drop-seq Alignment Cookbook (http://mccarrolllab.com/wp-content/uploads/2016/03/Drop-seqAlignmentCookbookv1.2Jan2016.pdf) to generate a Digital Gene Expression (DGE) matrix. Put the cell barcodes (the column names in the DGE matrix) into a text file with one barcode per line.
 
 1. Execute ./setup.sh setup. This will create a new directory called Simulation into which all the software required for this pipeline will be locally installed. In addition, empty directories are created within the Simulation directory which will eventually contain the RSEM references, various indices, the raw and simulated data, results matrices and graphs. This step will take ~30 minutes - 1 hour depending on your network speed.
 
