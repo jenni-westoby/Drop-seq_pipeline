@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+#script which converts demultiplexed bams to fastqs
+
 path_to_data=$1
 path_to_java=$2
 path_to_picard_jar=$3
