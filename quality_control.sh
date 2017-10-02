@@ -22,7 +22,7 @@ QC() {
 
     memory=`pwd`
     cd Simulation/data/simulated
-    for i in $(find . -name '*_1.fastq*' -o -name '*_1.fq*');
+    for i in $(find . -name '*.fastq');
     do
       base=`echo $i |awk -F/ '{print $2}'`
       filename=`echo $base | rev | cut -d _ -f2- | rev`
@@ -45,7 +45,7 @@ QC() {
 
     memory=`pwd`
     cd $3
-    for i in $(find . -name '*_1.fastq*' -o -name '*_1.fq*');
+    for i in $(find . -name '*.fastq*');
     do
       base=`echo $i |awk -F/ '{print $2}'`
       filename=`echo $base | rev | cut -d _ -f2- | rev`
@@ -96,12 +96,8 @@ STAR_and_RSeQC() {
   end=$3
   subdir=$4
 
-  trueend=`echo $end |awk -F. '{print $2}'`
-
-  echo $data_dir/$filename"_1."$trueend
-
   #Run STAR
-  Simulation/STAR/bin/Linux_x86_64/STAR --runThreadN 8 --genomeDir Simulation/indices/STAR --readFilesIn $data_dir/$filename"_1."$trueend $data_dir/$filename"_2."$trueend --outFileNamePrefix Simulation/bamfiles/$subdir/$filename --outSAMtype BAM SortedByCoordinate
+  Simulation/STAR/bin/Linux_x86_64/STAR --runThreadN 8 --genomeDir Simulation/indices/STAR --readFilesIn $data_dir/$filename".fastq" --outFileNamePrefix Simulation/bamfiles/$subdir/$filename --outSAMtype BAM SortedByCoordinate
 
   #Use bam_stat from the RSeQC package to find alignment statistics
   source Simulation/venv/bin/activate
