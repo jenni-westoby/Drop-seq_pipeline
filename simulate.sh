@@ -11,7 +11,7 @@ run_simulations(){
   fi
   memory=`pwd`
   cd $1
-  for i in $(find . -name '*_1.fastq*' -o -name '*_1.fq*');
+  for i in $(find . -name '*.fastq');
   do
     base=`echo $i |awk -F/ '{print $2}'`
     filename=`echo $base |awk -F_ '{print $1}'`
@@ -26,31 +26,21 @@ simulate() {
 
 
  #Make filename strings
- base=`echo $1 |awk -F/ '{print $2}'`
- filename=`echo $base | rev | cut -d _ -f2- | rev`
- end=`echo $base |awk -F. '{print $(NF-1)"."$(NF)}'`
- filename_1=$filename"_1."$end
- filename_2=$filename"_2."$end
+ filename=`echo $1 |awk -F/ '{print $2}'`
  raw_data_dir=${2%/}
 
- #Find number of reads in input files
- echo $raw_data_dir/$base
- gunzip -c $raw_data_dir/$base > $raw_data_dir/$filename'_1.fastq'
-
- lines="$(wc -l $raw_data_dir/$filename'_1.fastq' | awk '{print $1}')"
+ lines="$(wc -l $raw_data_dir/$filename | awk '{print $1}')"
  reads="$(echo $((lines / 4)))"
 
- rm $raw_data_dir/$filename'_1.fastq'
-
  #Use RSEM to calculate expression
- ./Simulation/RSEM-1.3.0/rsem-calculate-expression --paired-end --star-gzipped-read-file --star\
+ ./Simulation/RSEM-1.3.0/rsem-calculate-expression --star\
        --star-path Simulation/STAR/bin/Linux_x86_64/ \
        -p 8 \
                    --estimate-rspd \
                    --append-names \
                    --output-genome-bam \
        --single-cell-prior --calc-pme \
-                   $raw_data_dir/$filename_1 $raw_data_dir/$filename_2 \
+                   $raw_data_dir/$filename \
                    Simulation/ref/reference Simulation/data/temp/$filename
 
  #extract first number of third line of filename.theta, which is an estimate of the portion of reads due to background noise
