@@ -63,6 +63,16 @@ QC() {
       data_dir=${3%/}
       cd $memory
       bsub -n8 -R"span[hosts=1]" -c 99999 -G team_hemberg -q normal -o $TEAM/temp.logs/output.$filename"qcraw" -e $TEAM/temp.logs/error.$filename"qcraw" -R"select[mem>100000] rusage[mem=100000]" -M 100000 qualitycontrol $filename $data_dir ${end%/} "raw"
+      
+      num_jobs=`bjobs | wc -l`
+      max_jobs=100
+
+      #This prevents the number of queued jobs greatly exceeding 100.
+      while [[ $num_jobs -gt $max_jobs ]];
+      do
+        sleep 100
+        num_jobs=`bjobs | wc -l`
+      done
     done
 
   #Otherwise, print an error message and exit
@@ -135,5 +145,3 @@ export -f STAR_and_RSeQC
 export -f qualitycontrol
 
 "$@"
-
-bsub -R"span[hosts=1]" -c 99999 -G team_hemberg -q normal -o $TEAM/temp.logs/output.$filename"qctest" -e $TEAM/temp.logs/error.$filename"qctest" -R"select[mem>100000] rusage[mem=100000]" -M 100000 ./quality_control.sh QC genomes/
