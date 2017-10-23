@@ -29,6 +29,16 @@ QC() {
       end=`echo $base |awk -F. '{print $(NF-2)"."$(NF-1)"."$(NF)}' | awk -F_ '{print $NF}'`
       cd $memory
       bsub -n8 -R"span[hosts=1]" -c 99999 -G team_hemberg -q normal -o $TEAM/temp.logs/output.$filename"qcsim" -e $TEAM/temp.logs/error.$filename"qcsim" -R"select[mem>100000] rusage[mem=100000]" -M 100000 qualitycontrol $filename Simulation/data/simulated ${end%/} "simulated"
+      
+      num_jobs=`bjobs | wc -l`
+      max_jobs=100
+
+      #This prevents the number of queued jobs greatly exceeding 100.
+      while [[ $num_jobs -gt $max_jobs ]];
+      do
+        sleep 100
+        num_jobs=`bjobs | wc -l`
+      done
     done
 
   #If there are three args, check that the STAR index exists and if not make it, then produce quality control statistics for raw data
