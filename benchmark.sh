@@ -62,13 +62,24 @@ benchmark(){
 
         #Run tool on simulated cells. Each cell is submitted as a seperate job.
         cd Simulation/data/simulated
-        for i in $(find . -name '*_1.fastq*' -o -name '*_1.fq*');
+        for i in $(find . -name '*.fq');
         do
           base=`echo $i |awk -F/ '{print $2}'`
           filename=`echo $base |awk -F_ '{print $1}'`
           cd $memory
           #The line below will need to be edited for your LSF job system.
           bsub -n8 -R"span[hosts=1]" -c 99999 -G team_hemberg -q normal -o $TEAM/temp.logs/"output."$filename$1 -e $TEAM/temp.logs/"error."$filename$1 -R"select[mem>200000] rusage[mem=200000]" -M 200000 ./quantify.sh $1 $filename
+          
+          num_jobs=`bjobs | wc -l`
+          max_jobs=100
+
+          #This prevents the number of queued jobs greatly exceeding 100.
+          while [[ $num_jobs -gt $max_jobs ]];
+          do
+            sleep 100
+            num_jobs=`bjobs | wc -l`
+          done
+
         done
 
         #If a data matrix hasn't been made for the ground_truth results, make it
