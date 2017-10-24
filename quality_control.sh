@@ -117,7 +117,7 @@ STAR_and_RSeQC() {
   subdir=$4
 
   #Run STAR
-  Simulation/STAR/bin/Linux_x86_64/STAR --runThreadN 8 --genomeDir Simulation/indices/STAR --readFilesIn $data_dir/$filename".fastq" --outFileNamePrefix Simulation/bamfiles/$subdir/$filename --outSAMtype BAM SortedByCoordinate
+  Simulation/STAR/bin/Linux_x86_64/STAR --runThreadN 8 --genomeDir Simulation/indices/STAR --readFilesIn $data_dir/$filename --outFileNamePrefix Simulation/bamfiles/$subdir/$filename --outSAMtype BAM SortedByCoordinate
 
   #Use bam_stat from the RSeQC package to find alignment statistics
   source Simulation/venv/bin/activate
