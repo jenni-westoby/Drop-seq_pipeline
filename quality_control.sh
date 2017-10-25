@@ -22,7 +22,7 @@ QC() {
 
     memory=`pwd`
     cd Simulation/data/simulated
-    for i in $(find . -name '*.fastq');
+    for i in $(find . -name '*.fq');
     do
       base=`echo $i |awk -F/ '{print $2}'`
       filename=`echo $base | rev | cut -d . -f2- | rev`
