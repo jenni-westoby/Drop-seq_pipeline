@@ -42,3 +42,7 @@ To run the pipeline:
 12. Execute ./benchmark.sh benchmark name_of_program_you_want_to_test. This will generate results matrices of expression values for the method you are interested in. Repeat for each method you want to test.
 
 13. Execute ./make_matrix.sh make_matrix. This generates a compact results matrix for each method in results_matrices.
+
+14. Execute ./clean_data.sh to trim filename paths from results matrix column names.
+
+Note - for quality control purposes it is often useful to have expression estimates from the original (unsimulated) data. You can obtain this data by executing ./benchmark_real.sh benchmark Kallisto /path/to/data
