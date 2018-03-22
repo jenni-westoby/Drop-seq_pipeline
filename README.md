@@ -29,11 +29,28 @@ To run the pipeline:
 
 6. Execute ./RSEM_ref.sh make_ref /path/to/gtf path/to/fasta, where the gtf and fasta files are the reference genome. This builds the RSEM reference.
 
-7. Execute ./quality_control.sh QC path/to/gtf path/to/fasta path/to/raw/data. This creates a table of quality control statistics. Based on the results of this you can decide which cells you would like to simulate and which you are going to discard.
+7. Execute ./quality_control.sh QC path/to/gtf path/to/fasta path/to/raw/data. This creates a table of quality control statistics. Based on the results of this you can decide which cells you would like to simulate and which you are going to discard. The thresholds used to discard cells in our manuscript are listed below:
+
+| Statistic | Name of statistic in table | Threshold |
+-------------|--------|---------
+|No. uniquely mapping reads|Unique    | >20000 |
+|No. of non-uniquely mapping reads|NonUnique|>3000|
+|No. alignments|NumAlign|>25000|
+|No. of reads|NumReads|>20000|
+
+In addition, scater was used to identify and remove cells with more than 10% of reads mapping to rRNA. To generate the counts matrix used by scater, execute ./benchmark_real.sh benchmark Kallisto /path/to/data. 
 
 8. Once you have decided which cells to discard and have a directory containing only the gzipped cells you want to simulate, execute ./simulate.sh run_simulations path/to/raw/data. The simulated cells and their ground truth expression values are saved in Simulation/data/simulated.
 
-9. If you wish, you can also perform quality control on your simulated cells based on read and alignment quality. This is probably wise, as RSEM sometimes generates cells with very few reads. Execute ./quality_control.sh QC path/to/gtf path/to/fasta and delete any problematic cells from the data/simulated directory.
+9. If you wish, you can also perform quality control on your simulated cells based on read and alignment quality. This is probably wise, as RSEM sometimes generates cells with very few reads. Execute ./quality_control.sh QC path/to/gtf path/to/fasta and delete any problematic cells from the data/simulated directory. The thresholds used to discard cells in our manuscript are listed below:
+
+| Statistic | Name of statistic in table | Threshold |
+-------------|--------|---------
+|No. uniquely mapping reads|Unique    | <1000 |
+|No. of non-uniquely mapping reads|NonUnique|>500|
+|No. alignments|NumAlign|<1,000|
+
+In addition, scater was used to identify and remove cells with more than 10% of reads mapping to rRNA in the ground truth.
 
 10. Perform any further quality control you would like to perform prior to doing your benchmarking. For example, I use the scater package to filter based on patterns of expression, such as unusually high percentages of ERCCs. For this analysis I use the ground truth expression values produced in the simulation.
 
