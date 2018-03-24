@@ -1,9 +1,18 @@
 #!/bin/bash
 #Note users will require a github account and need to have virtualenv installed
-#!/bin/bash
-#Note users will require a github account and need to have virtualenv installed
+
 
 setup(){
+
+  mkdir ./Dropseq_Alignment_Cookbook
+  cd Dropseq_Alignment_Cookbook
+  wget http://mccarrolllab.com/download/1276/Drop-seq_tools-1.13-3.zip
+  unzip Drop-seq_tools-1.13-3.zip
+  mkdir temp_files
+  wget https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.9.0/sratoolkit.2.9.0-ubuntu64.tar.gz
+  tar -xvzf sratoolkit.2.9.0-ubuntu64.tar.gz
+  cd ..
+  
 
   #First make a directory in which simulation data and programs will be kept
   mkdir ./Simulation
@@ -38,7 +47,7 @@ setup(){
   else
     echo "Successfully installed Sailfish"
   fi
-  
+
   #Install eXpress
   wget https://pachterlab.github.io/eXpress/downloads/express-1.5.1/express-1.5.1-linux_x86_64.tgz
   tar -xvzf express-1.5.1-linux_x86_64.tgz
@@ -97,6 +106,9 @@ setup(){
   else
     echo "Successfully installed SAMtools"
   fi
+
+  #Get drop-seq data 
+  ../Dropseq_Alignment_Cookbook/sratoolkit.2.9.0-ubuntu64/bin/sam-dump SRR358750 | ./samtools-1.5/samtools view -bS -> ../Dropseq_Alignment_Cookbook/SRR358750.bam
 
   #Install virtualenv and RSeQC
   git clone https://github.com/pypa/virtualenv.git
