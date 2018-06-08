@@ -109,7 +109,8 @@ setup(){
   fi
 
   #Get drop-seq data
-  ../Dropseq_Alignment_Cookbook/sratoolkit.2.9.0-ubuntu64/bin/sam-dump SRR358750 | ./samtools-1.5/samtools view -bS -> ../Dropseq_Alignment_Cookbook/SRR358750.bam
+  ../Dropseq_Alignment_Cookbook/sratoolkit.2.9.0-ubuntu64/bin/prefetch SRR3587500
+  ../Dropseq_Alignment_Cookbook/sratoolkit.2.9.0-ubuntu64/bin/sam-dump SRR3587500.sra | ./samtools-1.5/samtools view -bS -> ../Dropseq_Alignment_Cookbook/SRR3587500.bam
 
   #Install virtualenv and RSeQC
   git clone https://github.com/pypa/virtualenv.git
