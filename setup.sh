@@ -11,8 +11,9 @@ setup(){
   mkdir temp_files
   wget https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.9.0/sratoolkit.2.9.0-ubuntu64.tar.gz
   tar -xvzf sratoolkit.2.9.0-ubuntu64.tar.gz
+  wget https://github.com/broadinstitute/picard/releases/download/2.18.0/picard.jar
   cd ..
-  
+
 
   #First make a directory in which simulation data and programs will be kept
   mkdir ./Simulation
@@ -107,7 +108,7 @@ setup(){
     echo "Successfully installed SAMtools"
   fi
 
-  #Get drop-seq data 
+  #Get drop-seq data
   ../Dropseq_Alignment_Cookbook/sratoolkit.2.9.0-ubuntu64/bin/sam-dump SRR358750 | ./samtools-1.5/samtools view -bS -> ../Dropseq_Alignment_Cookbook/SRR358750.bam
 
   #Install virtualenv and RSeQC
