@@ -64,7 +64,7 @@ SECOND_END_FASTQ=temp_files/FromBamSRR3587500_2.fastq
 #Run STAR
 ../Simulation/STAR/bin/Linux_x86_64/STAR --runThreadN 8 \
 --genomeDir ../Simulation/indices/STAR \
---readFilesIn temo_files/SRR3587500_unaligned_mc_tagged_polyA_filtered.fastq \
+--readFilesIn temp_files/SRR3587500_unaligned_mc_tagged_polyA_filtered.fastq \
 --outFileNamePrefix temp_files/SRR3587500_star_ind
 
 #Sort the sam file
@@ -114,4 +114,3 @@ seed=0;
 shuf --random-source=<(get_seeded_random $seed) -n 1000 temp/cell_barcodes.txt > temp/1000_cell_barcodes
 
 mkdir demultiplexed_bams
-
