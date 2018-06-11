@@ -32,19 +32,15 @@ done
 ./clean_data.sh
 
 #move data - some of this should move into setup.sh
-mkdir raw_results/data
 cp Simulation/results_matrices/clean* raw_results/data/
-mkdir figures
-mkdir figures/data
-mkdir figures/pdfs
-mkdir figures/pngs
+
 
 #format data to make figures
 cd raw_results
 #Figure 3
 Rscript Figure3.R
+Rscript SupplementaryFigure13.R
 #Still need to update the below
-#S13
 #S14
 #S15
 

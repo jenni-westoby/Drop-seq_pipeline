@@ -36,6 +36,11 @@ setup(){
     echo "Successfully installed RSEM"
   fi
 
+  #Fix bug in RSEM (see https://github.com/deweylab/RSEM/pull/79)
+  git clone https://github.com/jenni-westoby/RSEM.git
+  cp RSEM/simul.h RSEM-1.3.0/simul.h
+  rm -r RSEM
+
   #Install Sailfish
   wget https://github.com/kingsfordgroup/sailfish/releases/download/v0.10.0/SailfishBeta-0.10.0_CentOS5.tar.gz
   tar -xvzf SailfishBeta-0.10.0_CentOS5.tar.gz
@@ -155,6 +160,12 @@ setup(){
 
   mkdir ref
   mkdir results_matrices
+
+  mkdir raw_results/data
+  
+  mkdir figures/data
+  mkdir figures/pdfs
+  mkdir figures/pngs
 
 }
 
