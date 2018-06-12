@@ -51,9 +51,9 @@ MISMATCHES=0 NUM_BASES=6
 
 #Convert bamfile to fastq
 $path_to_java -XX:MaxHeapSize=1000m -jar picard.jar SamToFastq \
-I=SRR3587500_sorted.bam \
-FASTQ=temp_files/FromBamSRR3587500_1.fastq \
-SECOND_END_FASTQ=temp_files/FromBamSRR3587500_2.fastq
+I=temp_files/SRR3587500_unaligned_mc_tagged_polyA_filtered.bam \
+FASTQ=temp_files/SRR3587500_unaligned_mc_tagged_polyA_filtered.fastq \
+
 
 #Generate STAR Index
 ../Simulation/STAR/bin/Linux_x86_64/STAR --runThreadN 8 \

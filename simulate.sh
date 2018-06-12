@@ -53,7 +53,7 @@ simulate() {
        --single-cell-prior --calc-pme \
                    $raw_data_dir/$filename \
                    Simulation/ref/reference Simulation/data/temp/$filename
-                   
+
   #extract first number of third line of filename.theta, which is an estimate of the portion of reads due to background noise
   background_noise=`sed '3q;d' Simulation/data/temp/$filename".stat"/$filename".theta" | awk '{print $1}'`
 
@@ -64,7 +64,7 @@ simulate() {
                                          --seed 0
 
   #Tidy up
-  rm -r Simulation/data/temp/$filename*
+  #rm -r Simulation/data/temp/$filename*
 }
 
 export -f simulate
