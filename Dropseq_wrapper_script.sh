@@ -37,9 +37,17 @@ cp Simulation/results_matrices/clean* raw_results/data/
 
 #format data to make figures
 cd raw_results
-#Figure 3
 Rscript Figure3.R
 Rscript SupplementaryFigure13.R
+Rscript SupplementaryFigure14.R
+Rscript SupplementaryFigure15.R
+
+cd ../figures/scripts
+Rscript Figure3.R
+Rscript SupplementaryFigure13.R
+Rscript SupplementaryFigure14.R
+Rscript SupplementaryFigure15.R
+
 #Still need to update the below
 #S14
 #S15
