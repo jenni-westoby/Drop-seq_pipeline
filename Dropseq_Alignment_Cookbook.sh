@@ -119,14 +119,17 @@ get_seeded_random()
     </dev/zero 2>/dev/null;
 }
 
-seed=0;
+#If you change the seed, watch out for blank lines in the output
+seed=1;
 
 #Randomly select 1000 cells
 shuf --random-source=<(get_seeded_random $seed) -n 1000 temp_files/cell_barcodes.txt > temp_files/1000_cell_barcodes.txt
 
 mkdir demultiplexed_bams
 
-# while read i;
-# do
-#   samtools view temp_files/SRR3587500_BSE.bam.dge.summary.txt | grep "XC:Z:"$i | cat ../header.sam - | samtools view -Sb - > demultiplexed_bams/$i".bam"
-# done < temp/1000_cell_barcodes
+./demultiplex.sh temp_files/1000_cell_barcodes.txt
+
+mkdir demultiplexed_fastqs
+
+#Convert bams to fastqs
+./convert_bam_to_fastq.sh Dropseq_Alignment_Cookbook/demultiplexed_bams /software/java/bin/java Dropseq_Alignment_Cookbook/picard.jar Dropseq_Alignment_Cookbook/demultiplexed_fastqs
