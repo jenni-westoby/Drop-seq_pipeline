@@ -11,7 +11,7 @@ FASTQ=final_SRR3587500.fastq \
 cd ..
 
 #RSEM
-./Simulation/RSEM/rsem-calculate-expression --star\
+./Simulation/RSEM-1.3.0/rsem-calculate-expression --star\
       --star-path Simulation/STAR/bin/Linux_x86_64 \
       -p 8 \
       --fragment-length-mean 1600 --fragment-length-sd 50 \

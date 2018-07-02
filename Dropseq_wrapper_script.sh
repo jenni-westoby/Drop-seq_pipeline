@@ -5,16 +5,13 @@ path_to_java=$1
 path_to_ref_fasta=$2
 path_to_ref_gtf=$3
 
-
 ./setup.sh setup
 ./Dropseq_Alignment_Cookbook.sh
 ./RSEM_ref.sh make_ref path_to_ref_gtf path_to_ref_fasta
 ./make_indexes.sh
+./RSEM_three_prime_bias.sh
 
-#Note to self - 3' coverage bias script + edit RSEM quantification
-#Note to self - make sure demultiplexed_fastqs and simulated fastqs have identical file names
-
-for i in Dropseq_Alignment_Cookbook/demultiplexed_fastqs/*_1.fq;
+for i in Dropseq_Alignment_Cookbook/demultiplexed_fastqs/*_1.fastq;
 do
   ./cell_level_analysis.sh $i
 done
@@ -33,7 +30,6 @@ done
 
 #move data - some of this should move into setup.sh
 cp Simulation/results_matrices/clean* raw_results/data/
-
 
 #format data to make figures
 cd raw_results
