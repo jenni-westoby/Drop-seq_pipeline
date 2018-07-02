@@ -3,7 +3,7 @@
 cd Dropseq_Alignment_Cookbook
 
 #Convert bamfile to fastq
-$path_to_java -XX:MaxHeapSize=1000m -jar picard.jar SamToFastq \
+$1 -XX:MaxHeapSize=1000m -jar picard.jar SamToFastq \
 I=temp_files/SRR3587500_BSE.bam \
 FASTQ=final_SRR3587500.fastq \
 

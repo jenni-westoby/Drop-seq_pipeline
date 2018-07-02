@@ -9,7 +9,7 @@ path_to_ref_gtf=$3
 ./Dropseq_Alignment_Cookbook.sh
 ./RSEM_ref.sh make_ref path_to_ref_gtf path_to_ref_fasta
 ./make_indexes.sh
-./RSEM_three_prime_bias.sh
+./RSEM_three_prime_bias.sh $path_to_java
 
 for i in Dropseq_Alignment_Cookbook/demultiplexed_fastqs/*_1.fastq;
 do
