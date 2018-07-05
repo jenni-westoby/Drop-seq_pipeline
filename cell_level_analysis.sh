@@ -1,6 +1,6 @@
 #!/bin/bash
 
-filename=`echo $1 |awk -F_ '{print $1}'`
+filename=`echo $1 |awk -F. '{print $1}'`
 
 ./quality_control.sh quality_control $filename Dropseq_Alignment_Cookbook/demultiplexed_fastqs '1.fastq' 'raw'
 ./simulate.sh simulate $filename Dropseq_Alignment_Cookbook/demultiplexed_fastqs
