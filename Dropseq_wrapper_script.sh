@@ -19,6 +19,16 @@
 
 for i in Dropseq_Alignment_Cookbook/small_test_data/*.fastq;
 do
+  num_jobs=`bjobs | wc -l`
+  max_jobs=100
+
+  # #This prevents the number of queued jobs greatly exceeding 30.
+  # while [[ $num_jobs -gt $max_jobs ]];
+  # do
+  #   sleep 100
+  #   num_jobs=`bjobs | wc -l`
+  # done
+
   filename=`echo $i | awk -F/ '{print $3}'`
   bsub -n8 -R"span[hosts=1]" -c 99999 -G team_hemberg -q normal -o $TEAM/temp.logs/output.$filename -e $TEAM/temp.logs/error.$filename -R"select[mem>100000] rusage[mem=100000]" -M100000 ./cell_level_analysis.sh $filename
 done
