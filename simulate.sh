@@ -36,10 +36,10 @@ simulate() {
 
 
  #Make filename strings
- filename=`echo $1 |awk -F/ '{print $2}'`
+ filename=$1
  raw_data_dir=${2%/}
 
- lines="$(wc -l $raw_data_dir/$filename | awk '{print $1}')"
+ lines="$(wc -l $raw_data_dir/$filename'.fastq' | awk '{print $1}')"
  reads="$(echo $((lines / 4)))"
 
  #Use RSEM to calculate expression
@@ -51,7 +51,7 @@ simulate() {
                    --fragment-length-mean 1600 --fragment-length-sd 50 \
                    --output-genome-bam \
        --single-cell-prior --calc-pme \
-                   $raw_data_dir/$filename \
+                   $raw_data_dir/$filename'.fastq' \
                    Simulation/ref/reference Simulation/data/temp/$filename
 
   #extract first number of third line of filename.theta, which is an estimate of the portion of reads due to background noise
