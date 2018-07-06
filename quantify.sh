@@ -145,7 +145,7 @@ eXpress () {
 	start_eXpress=`date +%s`
 
 	#Run eXpress
-	./Simulation/express-1.5.1-linux_x86_64/express Simulation/ref/reference.transcripts.fa Simulation/bamfiles/simulated/$filename'Aligned.toTranscriptome.out.bam' -m 1600 -s 50 -o Simulation/eXpress_results/$filename'.fq'
+	./Simulation/express-1.5.1-linux_x86_64/express Simulation/ref/reference.transcripts.fa Simulation/bamfiles/simulated/$filename'Aligned.toTranscriptome.out.bam' -m 1600 -s 50 -o Simulation/eXpress_results/$filename
 
 	#Stop the clock for eXpress
 	stop_eXpress=`date +%s`
@@ -169,7 +169,7 @@ Kallisto () {
 	#Start the clock for kallisto
 	start_kallisto=`date +%s`
 
-	./Simulation/kallisto_linux-v0.43.1/kallisto quant -i Simulation/indices/Kallisto/transcripts.idx --threads=8 --output-dir=Simulation/Kallisto_results/$filename --single -l 1600 -s 50 Simulation/data/simulated/$filename'.fq'
+	./Simulation/kallisto_linux-v0.43.1/kallisto quant -i Simulation/indices/Kallisto/transcripts.idx --threads=8 ---output-dir=Simulation/Kallisto_results/$filename --single -l 1600 -s 50 Simulation/data/simulated/$filename'.fq'
 
 	#Stop the clock for kallisto
 	stop_kallisto=`date +%s`
