@@ -17,7 +17,7 @@
 # done
 
 
-for i in Dropseq_Alignment_Cookbook/small_test_data/*.fastq;
+for i in Dropseq_Alignment_Cookbook/demultiplexed_fastqs/*.fastq;
 do
   num_jobs=`bjobs | wc -l`
   max_jobs=100
