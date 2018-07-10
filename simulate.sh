@@ -48,11 +48,11 @@ simulate() {
        -p 8 \
                    --estimate-rspd \
                    --append-names \
-                   #--fragment-length-mean 1600 --fragment-length-sd 50 \
                    --output-genome-bam \
        --single-cell-prior --calc-pme \
                    $raw_data_dir/$filename'.fastq' \
                    Simulation/ref/reference Simulation/data/temp/$filename
+                   #--fragment-length-mean 1600 --fragment-length-sd 50 \
 
   #extract first number of third line of filename.theta, which is an estimate of the portion of reads due to background noise
   background_noise=`sed '3q;d' Simulation/data/temp/$filename".stat"/$filename".theta" | awk '{print $1}'`
