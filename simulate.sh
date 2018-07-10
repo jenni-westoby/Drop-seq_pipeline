@@ -48,7 +48,7 @@ simulate() {
        -p 8 \
                    --estimate-rspd \
                    --append-names \
-                   --fragment-length-mean 1600 --fragment-length-sd 50 \
+                   #--fragment-length-mean 1600 --fragment-length-sd 50 \
                    --output-genome-bam \
        --single-cell-prior --calc-pme \
                    $raw_data_dir/$filename'.fastq' \
