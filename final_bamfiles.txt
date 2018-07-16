@@ -1,0 +1,10 @@
+Simulation/bamfiles/simulated/AGTTTTACACANAligned.out.bam.sorted.bam
+Simulation/bamfiles/simulated/ATACCTAGAAGGAligned.out.bam.sorted.bam
+Simulation/bamfiles/simulated/CAGCACCTGGGAAligned.out.bam.sorted.bam
+Simulation/bamfiles/simulated/GTGACAGTCAAGAligned.out.bam.sorted.bam
+Simulation/bamfiles/simulated/ACCACTTCGAAGAligned.out.bam.sorted.bam
+Simulation/bamfiles/simulated/CCAGAAATAAACAligned.out.bam.sorted.bam
+Simulation/bamfiles/simulated/ACTACGATCCTTAligned.out.bam.sorted.bam
+Simulation/bamfiles/simulated/AGTTACGCCGTCAligned.out.bam.sorted.bam
+Simulation/bamfiles/simulated/TTGCGGGCGGCCAligned.out.bam.sorted.bam
+Simulation/bamfiles/simulated/AACGCAAAAGTCAligned.out.bam.sorted.bam

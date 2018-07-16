@@ -1,0 +1,442 @@
+STAR version=STAR_2.5.4b
+STAR compilation time,server,dir=Fri Feb 9 10:47:42 EST 2018 florence.cshl.edu:/sonas-hs/gingeras/nlsas_norepl/user/dobin/STAR/STAR.sandbox/source
+##### DEFAULT parameters:
+versionSTAR                       20201
+versionGenome                     20101   20200   
+parametersFiles                   -   
+sysShell                          -
+runMode                           alignReads
+runThreadN                        1
+runDirPerm                        User_RWX
+runRNGseed                        777
+genomeDir                         ./GenomeDir/
+genomeLoad                        NoSharedMemory
+genomeFastaFiles                  -   
+genomeChainFiles                  -   
+genomeSAindexNbases               14
+genomeChrBinNbits                 18
+genomeSAsparseD                   1
+genomeSuffixLengthMax             18446744073709551615
+genomeFileSizes                   0   
+genomeConsensusFile               -
+readFilesType                     Fastx   
+readFilesIn                       Read1   Read2   
+readFilesPrefix                   -
+readFilesCommand                  -   
+readMatesLengthsIn                NotEqual
+readMapNumber                     18446744073709551615
+readNameSeparator                 /   
+inputBAMfile                      -
+bamRemoveDuplicatesType           -
+bamRemoveDuplicatesMate2basesN    0
+limitGenomeGenerateRAM            31000000000
+limitIObufferSize                 150000000
+limitOutSAMoneReadBytes           100000
+limitOutSJcollapsed               1000000
+limitOutSJoneRead                 1000
+limitBAMsortRAM                   0
+limitSjdbInsertNsj                1000000
+outFileNamePrefix                 ./
+outTmpDir                         -
+outTmpKeep                        None
+outStd                            Log
+outReadsUnmapped                  None
+outQSconversionAdd                0
+outMultimapperOrder               Old_2.4
+outSAMtype                        SAM   
+outSAMmode                        Full
+outSAMstrandField                 None
+outSAMattributes                  Standard   
+outSAMunmapped                    None   
+outSAMorder                       Paired
+outSAMprimaryFlag                 OneBestScore
+outSAMreadID                      Standard
+outSAMmapqUnique                  255
+outSAMflagOR                      0
+outSAMflagAND                     65535
+outSAMattrRGline                  -   
+outSAMheaderHD                    -   
+outSAMheaderPG                    -   
+outSAMheaderCommentFile           -
+outBAMcompression                 1
+outBAMsortingThreadN              0
+outSAMfilter                      None   
+outSAMmultNmax                    18446744073709551615
+outSAMattrIHstart                 1
+outSJfilterReads                  All
+outSJfilterCountUniqueMin         3   1   1   1   
+outSJfilterCountTotalMin          3   1   1   1   
+outSJfilterOverhangMin            30   12   12   12   
+outSJfilterDistToOtherSJmin       10   0   5   10   
+outSJfilterIntronMaxVsReadN       50000   100000   200000   
+outWigType                        None   
+outWigStrand                      Stranded   
+outWigReferencesPrefix            -
+outWigNorm                        RPM   
+outFilterType                     Normal
+outFilterMultimapNmax             10
+outFilterMultimapScoreRange       1
+outFilterScoreMin                 0
+outFilterScoreMinOverLread        0.66
+outFilterMatchNmin                0
+outFilterMatchNminOverLread       0.66
+outFilterMismatchNmax             10
+outFilterMismatchNoverLmax        0.3
+outFilterMismatchNoverReadLmax    1
+outFilterIntronMotifs             None
+outFilterIntronStrands            RemoveInconsistentStrands
+clip5pNbases                      0   
+clip3pNbases                      0   
+clip3pAfterAdapterNbases          0   
+clip3pAdapterSeq                  -   
+clip3pAdapterMMp                  0.1   
+winBinNbits                       16
+winAnchorDistNbins                9
+winFlankNbins                     4
+winAnchorMultimapNmax             50
+winReadCoverageRelativeMin        0.5
+winReadCoverageBasesMin           0
+scoreGap                          0
+scoreGapNoncan                    -8
+scoreGapGCAG                      -4
+scoreGapATAC                      -8
+scoreStitchSJshift                1
+scoreGenomicLengthLog2scale       -0.25
+scoreDelBase                      -2
+scoreDelOpen                      -2
+scoreInsOpen                      -2
+scoreInsBase                      -2
+seedSearchLmax                    0
+seedSearchStartLmax               50
+seedSearchStartLmaxOverLread      1
+seedPerReadNmax                   1000
+seedPerWindowNmax                 50
+seedNoneLociPerWindow             10
+seedMultimapNmax                  10000
+seedSplitMin                      12
+alignIntronMin                    21
+alignIntronMax                    0
+alignMatesGapMax                  0
+alignTranscriptsPerReadNmax       10000
+alignSJoverhangMin                5
+alignSJDBoverhangMin              3
+alignSJstitchMismatchNmax         0   -1   0   0   
+alignSplicedMateMapLmin           0
+alignSplicedMateMapLminOverLmate    0.66
+alignWindowsPerReadNmax           10000
+alignTranscriptsPerWindowNmax     100
+alignEndsType                     Local
+alignSoftClipAtReferenceEnds      Yes
+alignEndsProtrude                 0   ConcordantPair   
+chimSegmentMin                    0
+chimScoreMin                      0
+chimScoreDropMax                  20
+chimScoreSeparation               10
+chimScoreJunctionNonGTAG          -1
+chimMainSegmentMultNmax           10
+chimJunctionOverhangMin           20
+chimOutType                       SeparateSAMold   
+chimFilter                        banGenomicN   
+chimSegmentReadGapMax             0
+sjdbFileChrStartEnd               -   
+sjdbGTFfile                       -
+sjdbGTFchrPrefix                  -
+sjdbGTFfeatureExon                exon
+sjdbGTFtagExonParentTranscript    transcript_id
+sjdbGTFtagExonParentGene          gene_id
+sjdbOverhang                      100
+sjdbScore                         2
+sjdbInsertSave                    Basic
+quantMode                         -   
+quantTranscriptomeBAMcompression    1
+quantTranscriptomeBan             IndelSoftclipSingleend
+twopass1readsN                    18446744073709551615
+twopassMode                       None
+##### Command Line:
+Simulation/STAR/bin/Linux_x86_64/STAR --runThreadN 2 --runMode genomeGenerate --genomeDir Simulation/indices/STAR --genomeFastaFiles /lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa --sjdbGTFfile /lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.89.gtf
+##### Initial USER parameters from Command Line:
+###### All USER parameters from Command Line:
+runThreadN                    2     ~RE-DEFINED
+runMode                       genomeGenerate     ~RE-DEFINED
+genomeDir                     Simulation/indices/STAR     ~RE-DEFINED
+genomeFastaFiles              /lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa        ~RE-DEFINED
+sjdbGTFfile                   /lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.89.gtf     ~RE-DEFINED
+##### Finished reading parameters from all sources
+
+##### Final user re-defined parameters-----------------:
+runMode                           genomeGenerate
+runThreadN                        2
+genomeDir                         Simulation/indices/STAR
+genomeFastaFiles                  /lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa   
+sjdbGTFfile                       /lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.89.gtf
+
+-------------------------------
+##### Final effective command line:
+Simulation/STAR/bin/Linux_x86_64/STAR   --runMode genomeGenerate   --runThreadN 2   --genomeDir Simulation/indices/STAR   --genomeFastaFiles /lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa      --sjdbGTFfile /lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.89.gtf
+
+##### Final parameters after user input--------------------------------:
+versionSTAR                       20201
+versionGenome                     20101   20200   
+parametersFiles                   -   
+sysShell                          -
+runMode                           genomeGenerate
+runThreadN                        2
+runDirPerm                        User_RWX
+runRNGseed                        777
+genomeDir                         Simulation/indices/STAR
+genomeLoad                        NoSharedMemory
+genomeFastaFiles                  /lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa   
+genomeChainFiles                  -   
+genomeSAindexNbases               14
+genomeChrBinNbits                 18
+genomeSAsparseD                   1
+genomeSuffixLengthMax             18446744073709551615
+genomeFileSizes                   0   
+genomeConsensusFile               -
+readFilesType                     Fastx   
+readFilesIn                       Read1   Read2   
+readFilesPrefix                   -
+readFilesCommand                  -   
+readMatesLengthsIn                NotEqual
+readMapNumber                     18446744073709551615
+readNameSeparator                 /   
+inputBAMfile                      -
+bamRemoveDuplicatesType           -
+bamRemoveDuplicatesMate2basesN    0
+limitGenomeGenerateRAM            31000000000
+limitIObufferSize                 150000000
+limitOutSAMoneReadBytes           100000
+limitOutSJcollapsed               1000000
+limitOutSJoneRead                 1000
+limitBAMsortRAM                   0
+limitSjdbInsertNsj                1000000
+outFileNamePrefix                 ./
+outTmpDir                         -
+outTmpKeep                        None
+outStd                            Log
+outReadsUnmapped                  None
+outQSconversionAdd                0
+outMultimapperOrder               Old_2.4
+outSAMtype                        SAM   
+outSAMmode                        Full
+outSAMstrandField                 None
+outSAMattributes                  Standard   
+outSAMunmapped                    None   
+outSAMorder                       Paired
+outSAMprimaryFlag                 OneBestScore
+outSAMreadID                      Standard
+outSAMmapqUnique                  255
+outSAMflagOR                      0
+outSAMflagAND                     65535
+outSAMattrRGline                  -   
+outSAMheaderHD                    -   
+outSAMheaderPG                    -   
+outSAMheaderCommentFile           -
+outBAMcompression                 1
+outBAMsortingThreadN              0
+outSAMfilter                      None   
+outSAMmultNmax                    18446744073709551615
+outSAMattrIHstart                 1
+outSJfilterReads                  All
+outSJfilterCountUniqueMin         3   1   1   1   
+outSJfilterCountTotalMin          3   1   1   1   
+outSJfilterOverhangMin            30   12   12   12   
+outSJfilterDistToOtherSJmin       10   0   5   10   
+outSJfilterIntronMaxVsReadN       50000   100000   200000   
+outWigType                        None   
+outWigStrand                      Stranded   
+outWigReferencesPrefix            -
+outWigNorm                        RPM   
+outFilterType                     Normal
+outFilterMultimapNmax             10
+outFilterMultimapScoreRange       1
+outFilterScoreMin                 0
+outFilterScoreMinOverLread        0.66
+outFilterMatchNmin                0
+outFilterMatchNminOverLread       0.66
+outFilterMismatchNmax             10
+outFilterMismatchNoverLmax        0.3
+outFilterMismatchNoverReadLmax    1
+outFilterIntronMotifs             None
+outFilterIntronStrands            RemoveInconsistentStrands
+clip5pNbases                      0   
+clip3pNbases                      0   
+clip3pAfterAdapterNbases          0   
+clip3pAdapterSeq                  -   
+clip3pAdapterMMp                  0.1   
+winBinNbits                       16
+winAnchorDistNbins                9
+winFlankNbins                     4
+winAnchorMultimapNmax             50
+winReadCoverageRelativeMin        0.5
+winReadCoverageBasesMin           0
+scoreGap                          0
+scoreGapNoncan                    -8
+scoreGapGCAG                      -4
+scoreGapATAC                      -8
+scoreStitchSJshift                1
+scoreGenomicLengthLog2scale       -0.25
+scoreDelBase                      -2
+scoreDelOpen                      -2
+scoreInsOpen                      -2
+scoreInsBase                      -2
+seedSearchLmax                    0
+seedSearchStartLmax               50
+seedSearchStartLmaxOverLread      1
+seedPerReadNmax                   1000
+seedPerWindowNmax                 50
+seedNoneLociPerWindow             10
+seedMultimapNmax                  10000
+seedSplitMin                      12
+alignIntronMin                    21
+alignIntronMax                    0
+alignMatesGapMax                  0
+alignTranscriptsPerReadNmax       10000
+alignSJoverhangMin                5
+alignSJDBoverhangMin              3
+alignSJstitchMismatchNmax         0   -1   0   0   
+alignSplicedMateMapLmin           0
+alignSplicedMateMapLminOverLmate    0.66
+alignWindowsPerReadNmax           10000
+alignTranscriptsPerWindowNmax     100
+alignEndsType                     Local
+alignSoftClipAtReferenceEnds      Yes
+alignEndsProtrude                 0   ConcordantPair   
+chimSegmentMin                    0
+chimScoreMin                      0
+chimScoreDropMax                  20
+chimScoreSeparation               10
+chimScoreJunctionNonGTAG          -1
+chimMainSegmentMultNmax           10
+chimJunctionOverhangMin           20
+chimOutType                       SeparateSAMold   
+chimFilter                        banGenomicN   
+chimSegmentReadGapMax             0
+sjdbFileChrStartEnd               -   
+sjdbGTFfile                       /lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.89.gtf
+sjdbGTFchrPrefix                  -
+sjdbGTFfeatureExon                exon
+sjdbGTFtagExonParentTranscript    transcript_id
+sjdbGTFtagExonParentGene          gene_id
+sjdbOverhang                      100
+sjdbScore                         2
+sjdbInsertSave                    Basic
+quantMode                         -   
+quantTranscriptomeBAMcompression    1
+quantTranscriptomeBan             IndelSoftclipSingleend
+twopass1readsN                    18446744073709551615
+twopassMode                       None
+----------------------------------------
+
+Finished loading and checking parameters
+Jul 03 12:30:52 ... starting to generate Genome files
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 0  "1" chrStart: 0
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 1  "10" chrStart: 195559424
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 2  "11" chrStart: 326369280
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 3  "12" chrStart: 448528384
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 4  "13" chrStart: 568852480
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 5  "14" chrStart: 689438720
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 6  "15" chrStart: 814481408
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 7  "16" chrStart: 918552576
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 8  "17" chrStart: 1016856576
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 9  "18" chrStart: 1112014848
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 10  "19" chrStart: 1202978816
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 11  "2" chrStart: 1264582656
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 12  "3" chrStart: 1446772736
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 13  "4" chrStart: 1606942720
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 14  "5" chrStart: 1763704832
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 15  "6" chrStart: 1915748352
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 16  "7" chrStart: 2065694720
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 17  "8" chrStart: 2211184640
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 18  "9" chrStart: 2340683776
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 19  "MT" chrStart: 2465464320
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 20  "X" chrStart: 2465726464
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 21  "Y" chrStart: 2636906496
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 22  "JH584299.1" chrStart: 2728656896
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 23  "GL456233.1" chrStart: 2729705472
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 24  "JH584301.1" chrStart: 2730229760
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 25  "GL456211.1" chrStart: 2730491904
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 26  "GL456350.1" chrStart: 2730754048
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 27  "JH584293.1" chrStart: 2731016192
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 28  "GL456221.1" chrStart: 2731278336
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 29  "JH584297.1" chrStart: 2731540480
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 30  "JH584296.1" chrStart: 2731802624
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 31  "GL456354.1" chrStart: 2732064768
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 32  "JH584294.1" chrStart: 2732326912
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 33  "JH584298.1" chrStart: 2732589056
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 34  "JH584300.1" chrStart: 2732851200
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 35  "GL456219.1" chrStart: 2733113344
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 36  "GL456210.1" chrStart: 2733375488
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 37  "JH584303.1" chrStart: 2733637632
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 38  "JH584302.1" chrStart: 2733899776
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 39  "GL456212.1" chrStart: 2734161920
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 40  "JH584304.1" chrStart: 2734424064
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 41  "GL456379.1" chrStart: 2734686208
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 42  "GL456216.1" chrStart: 2734948352
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 43  "GL456393.1" chrStart: 2735210496
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 44  "GL456366.1" chrStart: 2735472640
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 45  "GL456367.1" chrStart: 2735734784
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 46  "GL456239.1" chrStart: 2735996928
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 47  "GL456213.1" chrStart: 2736259072
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 48  "GL456383.1" chrStart: 2736521216
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 49  "GL456385.1" chrStart: 2736783360
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 50  "GL456360.1" chrStart: 2737045504
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 51  "GL456378.1" chrStart: 2737307648
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 52  "GL456389.1" chrStart: 2737569792
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 53  "GL456372.1" chrStart: 2737831936
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 54  "GL456370.1" chrStart: 2738094080
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 55  "GL456381.1" chrStart: 2738356224
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 56  "GL456387.1" chrStart: 2738618368
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 57  "GL456390.1" chrStart: 2738880512
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 58  "GL456394.1" chrStart: 2739142656
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 59  "GL456392.1" chrStart: 2739404800
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 60  "GL456382.1" chrStart: 2739666944
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 61  "GL456359.1" chrStart: 2739929088
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 62  "GL456396.1" chrStart: 2740191232
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 63  "GL456368.1" chrStart: 2740453376
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 64  "JH584292.1" chrStart: 2740715520
+/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.dna.primary_assembly.fa : chr # 65  "JH584295.1" chrStart: 2740977664
+Number of SA indices: 5305567000
+Jul 03 12:33:28 ... starting to sort Suffix Array. This may take a long time...
+Number of chunks: 6;   chunks size limit: 7655250112 bytes
+Jul 03 12:34:25 ... sorting Suffix Array chunks and saving them to disk...
+Writing 7515172648 bytes into Simulation/indices/STAR/SA_1 ; empty space on disk = 1557629433892864 bytes ...Writing 7584737136 bytes into Simulation/indices/STAR/SA_0 ; empty space on disk = 1557624571498496 bytes ... done
+ done
+Writing 7434438488 bytes into Simulation/indices/STAR/SA_2 ; empty space on disk = 1558308739080192 bytes ... done
+Writing 7530623208 bytes into Simulation/indices/STAR/SA_3 ; empty space on disk = 1558275114491904 bytes ... done
+Writing 4845481912 bytes into Simulation/indices/STAR/SA_5 ; empty space on disk = 1557514829762560 bytes ... done
+Writing 7534082608 bytes into Simulation/indices/STAR/SA_4 ; empty space on disk = 1557317241356288 bytes ... done
+Jul 03 17:52:35 ... loading chunks from disk, packing SA...
+Jul 03 17:55:46 ... finished generating suffix array
+Jul 03 17:55:46 ... generating Suffix Array index
+Jul 03 18:05:46 ... completed Suffix Array index
+Jul 03 18:05:46 ..... processing annotations GTF
+Processing sjdbGTFfile=/lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.89.gtf, found:
+		128717 transcripts
+		769494 exons (non-collapsed)
+		272530 collapsed junctions
+Jul 03 18:06:30 ..... finished GTF processing
+Jul 03 18:06:30   Loaded database junctions from the GTF file: /lustre/scratch117/cellgen/team218/jw28/genomes_release_89/Mus_musculus.GRCm38.89.gtf: 272530 total junctions
+
+WARNING: long repeat for junction # 185141 : 5 112774527 112775017; left shift = 255; right shift = 69
+WARNING: long repeat for junction # 187493 : 5 123190235 123190960; left shift = 255; right shift = 19
+WARNING: long repeat for junction # 196517 : 6 48754635 48755196; left shift = 81; right shift = 255
+WARNING: long repeat for junction # 227873 : 7 141808196 141810304; left shift = 255; right shift = 255
+Jul 03 18:06:31   Finished preparing junctions
+Jul 03 18:06:31 ..... inserting junctions into the genome indices
+Jul 03 18:31:25   Finished SA search: number of new junctions=272459, old junctions=0
+Jul 03 18:32:54   Finished sorting SA indicesL nInd=108983020
+Jul 03 18:35:23   Finished inserting junction indices
+Jul 03 18:36:23   Finished SAi
+Jul 03 18:36:23 ..... finished inserting junctions into genome
+Jul 03 18:36:23 ... writing Genome to disk ...
+Writing 2796004067 bytes into Simulation/indices/STAR/Genome ; empty space on disk = 1557189653688320 bytes ... done
+SA size in bytes: 22335018836
+Jul 03 18:36:32 ... writing Suffix Array to disk ...
+Writing 22335018836 bytes into Simulation/indices/STAR/SA ; empty space on disk = 1557182884503552 bytes ... done
+Jul 03 18:37:38 ... writing SAindex to disk
+Writing 8 bytes into Simulation/indices/STAR/SAindex ; empty space on disk = 1557138171379712 bytes ... done
+Writing 120 bytes into Simulation/indices/STAR/SAindex ; empty space on disk = 1557138171379712 bytes ... done
+Writing 1565873491 bytes into Simulation/indices/STAR/SAindex ; empty space on disk = 1557138171379712 bytes ... done
+Jul 03 18:37:54 ..... finished successfully
+DONE: Genome generation, EXITING
