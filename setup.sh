@@ -25,11 +25,11 @@ setup(){
   wget https://github.com/deweylab/RSEM/archive/v1.3.0.tar.gz
   tar -xvzf v1.3.0.tar.gz
   rm v1.3.0.tar.gz
-  cd RSEM-1.3.0
+  cd RSEM
   make
   make install prefix=.
   cd ..
-  if ! command -v ./RSEM-1.3.0/rsem-generate-data-matrix >/dev/null 2>&1; then
+  if ! command -v ./RSEM/rsem-generate-data-matrix >/dev/null 2>&1; then
     echo "Failed to install RSEM"
     exit 1
   else
@@ -38,7 +38,7 @@ setup(){
 
   #Fix bug in RSEM (see https://github.com/deweylab/RSEM/pull/79)
   git clone https://github.com/jenni-westoby/RSEM.git
-  cp RSEM/simul.h RSEM-1.3.0/simul.h
+  cp RSEM/simul.h RSEM/simul.h
   rm -r RSEM
 
   #Install Sailfish

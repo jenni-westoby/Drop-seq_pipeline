@@ -13,7 +13,7 @@ make_ref(){
   fi
 
   #Build the reference
-  ./Simulation/RSEM-1.3.0/rsem-prepare-reference --gtf $1 \
+  ./Simulation/RSEM/rsem-prepare-reference --gtf $1 \
                          --star \
                          --star-path Simulation/STAR/bin/Linux_x86_64/ \
                          -p 8 \

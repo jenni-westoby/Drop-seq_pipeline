@@ -43,7 +43,7 @@ simulate() {
  reads="$(echo $((lines / 4)))"
 
  #Use RSEM to calculate expression
- ./Simulation/RSEM-1.3.0/rsem-calculate-expression --star\
+ ./Simulation/RSEM/rsem-calculate-expression --star\
        --star-path Simulation/STAR/bin/Linux_x86_64/ \
        -p 8 \
                    --estimate-rspd \
@@ -59,7 +59,7 @@ simulate() {
 
 
   #Simulate reads
-  ./Simulation/RSEM-1.3.0/rsem-simulate-reads Simulation/ref/reference Simulation/data/temp/$filename".stat"/$filename".model" \
+  ./Simulation/RSEM/rsem-simulate-reads Simulation/ref/reference Simulation/data/temp/$filename".stat"/$filename".model" \
                                          Simulation/data/temp/$filename".isoforms.results" $background_noise $reads Simulation/data/simulated/$filename \
                                          --seed 0
 
