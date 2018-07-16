@@ -17,10 +17,17 @@
 # done
 
 
+<<<<<<< HEAD
 #for i in Dropseq_Alignment_Cookbook/demultiplexed_fastqs/*.fastq;
 #do
  # num_jobs=`bjobs | wc -l`
  # max_jobs=100
+=======
+for i in Dropseq_Alignment_Cookbook/small_test_data/*.fastq;
+do
+  num_jobs=`bjobs | wc -l`
+  max_jobs=100
+>>>>>>> 65ea375cc68f9ffb669f40b713e9622703061063
 
   #This prevents the number of queued jobs greatly exceeding 30.
   #while [[ $num_jobs -gt $max_jobs ]];
