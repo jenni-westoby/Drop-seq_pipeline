@@ -14,6 +14,7 @@ sed 's/\"//g' Salmon_quasi_TPM.txt | sed 's|Simulation/Salmon_results/Salmon_qua
 
 #Kallisto
 sed 's/\"//g' Kallisto_TPM.txt | sed 's|Simulation/Kallisto_results/||g' | sed 's|/abundance.tsv||g' > clean_Kallisto_TPM.txt
+sed 's/\"//g' Kallisto_real_Counts.txt | sed 's|Simulation/Kallisto_results/||g' | sed 's|/abundance.tsv||g' > clean_Kallisto_real_Counts.txt
 
 #eXpress
 sed 's/\"//g' eXpress_TPM.txt | sed 's|Simulation/eXpress_results/||g' | sed 's|/results.xprs||g' > clean_eXpress_TPM.txt
@@ -23,3 +24,4 @@ sed 's/\"//g' RSEM_TPM.txt | sed 's|Simulation/RSEM_results/||g' | sed 's|.isofo
 
 #ground truth
 sed 's/\"//g' ground_truth_TPM.txt | sed 's|Simulation/data/simulated/||g' | sed 's|.sim.isoforms.results||g' > clean_ground_truth_TPM.txt
+sed 's/\"//g' ground_truth_ounts.txt | sed 's|Simulation/data/simulated/||g' | sed 's|.sim.isoforms.results||g' > clean_ground_truth_Counts.txt
