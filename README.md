@@ -34,3 +34,5 @@ And the simulated data:
 |No. uniquely mapping reads|Unique    | <1000 |
 |No. of non-uniquely mapping reads|NonUnique|>500|
 |No. alignments|NumAlign|<1,000|
+
+In addition, the scater package was used to filter cells in which more than 10% of reads mapped to mitochondrial genes in both the raw and simulated data.
