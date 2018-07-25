@@ -11,7 +11,7 @@ library(ggplot2)
 dropseq_counts<-read.table("data/clean_Kallisto_real_Counts.txt")
 
 ids<-names(dropseq_counts)
-batch<-rep("batch",1000)
+batch<-rep("batch",ncol(dropseq_counts))
 
 anno<- as.data.frame(cbind(batch,ids))
 rownames(anno)<-anno$ids
@@ -35,4 +35,5 @@ save(dropseq_scater_QC, file="../figures/data/SupplementaryFigure13_scater_objec
 ##########################################################################################
 # RAW QC STATISTICS
 QC_raw<-read.csv("data/raw/read_alignment_qc.csv", header=T)
+names(QC_raw)<-c("Filename","Unique","NonUnique","Unmapped","NumAlignments","NumReads")
 write.table(QC_raw, file = "../figures/data/SupplementaryFigure13_reads_alignment_data.txt")

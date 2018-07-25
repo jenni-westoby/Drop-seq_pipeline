@@ -11,7 +11,7 @@ library(SingleCellExperiment)
 dropseq_counts<-read.table("data/clean_Kallisto_real_Counts.txt")
 
 ids<-names(dropseq_counts)
-batch<-rep("batch",1000)
+batch<-rep("batch",ncol(dropseq_counts))
 
 anno<- as.data.frame(cbind(batch,ids))
 rownames(anno)<-anno$ids
@@ -41,7 +41,8 @@ dropseq_counts<-dropseq_counts[,colnames(dropseq_counts) %in% dropseq_scater_QC$
 
 #####################################################################################
 # RAW READS QC
-QC_raw<-read.csv("data/raw/read_alignment_qc.csv", header=T)
+QC_raw<-read.csv("data/raw/read_alignment_qc.csv", header=F)
+names(QC_raw)<-c("Filename","Unique","NonUnique","Unmapped","NumAlignments","NumReads")
 QC_raw<-QC_raw[complete.cases(QC_raw),]
 
 #remove cells based on Figure S13
@@ -54,7 +55,7 @@ rm(list=setdiff(ls(), c("QC_raw")))
 dropseq_counts<-read.table("data/clean_ground_truth_Counts.txt")
 
 ids<-names(dropseq_counts)
-batch<-rep("batch",1000)
+batch<-rep("batch",ncol(dropseq_counts))
 
 anno<-as.data.frame(cbind(batch,ids))
 rownames(anno)<-anno$ids
@@ -79,13 +80,14 @@ mt_reads<-scater::plotPhenoData(
              colour = "batch")
 )
 
-dropseq_scater_QC<-dropseq_scater_QC[,dropseq_scater_QC$pct_counts_feature_controls_MT<10]
+dropseq_scater_QC<-dropseq_scater_QC[,dropseq_scater_QC$pct_counts_MT<10]
 dropseq_counts<-dropseq_counts[,colnames(dropseq_counts) %in% dropseq_scater_QC$ids]
 
 ##################################################################################################
 # SIM READS QC
 
-QC_sim<-read.csv("data/simulated/read_alignment_qc.csv", header=T)
+QC_sim<-read.csv("data/simulated/read_alignment_qc.csv", header=F)
+names(QC_sim)<-c("Filename","Unique","NonUnique","Unmapped","NumAlignments","NumReads")
 QC_sim<-as.data.frame(QC_sim)
 QC_sim$Filename<-sub(".fastq", "", QC_sim$Filename)
 QC_sim<-QC_sim[QC_sim$Filename %in% QC_raw$Filename,]
@@ -119,7 +121,6 @@ Salmon_SMEM<-data_processing("data/clean_Salmon_SMEM_TPM.txt", QC_sim)
 Sailfish<-data_processing("data/clean_Sailfish_TPM.txt", QC_sim)
 eXpress<-data_processing("data/clean_eXpress_TPM.txt", QC_sim)
 Kallisto<-data_processing("data/clean_Kallisto_TPM.txt", QC_sim)
-Updated_Salmon_align<-data_processing("data/clean_Updated_Salmon_Alignment_Results_TPM.txt", QC_sim)
 
 ################################################################################
 # SPEARMAN'S GRAPH
@@ -137,12 +138,11 @@ Salmon_SMEM_cor<-correlation(Salmon_SMEM, ground_truth)
 Sailfish_cor<-correlation(Sailfish, ground_truth)
 eXpress_cor<-correlation(eXpress, ground_truth)
 Kallisto_cor<-correlation(Kallisto, ground_truth)
-Updated_Salmon_align_cor<-correlation(Updated_Salmon_align, ground_truth)
 
 
 
 #get data into right format
-spearmans_data<-melt(rbind(RSEM_cor,Salmon_align_cor, Updated_Salmon_align_cor, Salmon_quasi_cor, Salmon_SMEM_cor, Sailfish_cor, eXpress_cor, Kallisto_cor))
+spearmans_data<-melt(rbind(RSEM_cor,Salmon_align_cor, Salmon_quasi_cor, Salmon_SMEM_cor, Sailfish_cor, eXpress_cor, Kallisto_cor))
 
 ##############################################################################################
 # NRMSE GRAPH
@@ -157,10 +157,9 @@ Salmon_SMEM_nmrse<-nrmse(log2(Salmon_SMEM+1),log2(ground_truth+1))
 Sailfish_nmrse<-nrmse(log2(1+Sailfish),log2(ground_truth+1))
 eXpress_nmrse<-nrmse(log2(eXpress+1),log2(ground_truth+1))
 Kallisto_nmrse<-nrmse(log2(Kallisto+1),log2(ground_truth+1))
-Updated_Salmon_align_nmrse<-nrmse(log2(Updated_Salmon_align + 1), log2(ground_truth+1))
 
 #get data into right format
-nrmse_data<-melt(rbind(RSEM_nmrse,Salmon_align_nmrse, Updated_Salmon_align_nmrse, Salmon_quasi_nmrse, Salmon_SMEM_nmrse, Sailfish_nmrse, eXpress_nmrse, Kallisto_nmrse))
+nrmse_data<-melt(rbind(RSEM_nmrse,Salmon_align_nmrse, Salmon_quasi_nmrse, Salmon_SMEM_nmrse, Sailfish_nmrse, eXpress_nmrse, Kallisto_nmrse))
 
 ###############################################################################################
 # PRECISION GRAPH
@@ -194,9 +193,8 @@ Salmon_SMEM_precision<-return_precision_per_cell(ground_truth,Salmon_SMEM)[,1]
 Sailfish_precision<-return_precision_per_cell(ground_truth,Sailfish)[,1]
 eXpress_precision<-return_precision_per_cell(ground_truth,eXpress)[,1]
 Kallisto_precision<-return_precision_per_cell(ground_truth,Kallisto)[,1]
-Updated_Salmon_align_precision<-return_precision_per_cell(ground_truth,Updated_Salmon_align)[,1]
 
-precision_data<-melt(rbind(RSEM_precision,Salmon_align_precision, Updated_Salmon_align_precision, Salmon_quasi_precision, Salmon_SMEM_precision, Sailfish_precision, eXpress_precision, Kallisto_precision))
+precision_data<-melt(rbind(RSEM_precision,Salmon_align_precision,  Salmon_quasi_precision, Salmon_SMEM_precision, Sailfish_precision, eXpress_precision, Kallisto_precision))
 
 #################################################################################################
 # RECALL PLOTS
@@ -230,9 +228,8 @@ Salmon_SMEM_recall<-return_recall_per_cell(ground_truth,Salmon_SMEM)[,1]
 Sailfish_recall<-return_recall_per_cell(ground_truth,Sailfish)[,1]
 eXpress_recall<-return_recall_per_cell(ground_truth,eXpress)[,1]
 Kallisto_recall<-return_recall_per_cell(ground_truth,Kallisto)[,1]
-Updated_Salmon_align_recall<-return_recall_per_cell(ground_truth,Updated_Salmon_align)[,1]
 
-recall_data<-melt(rbind(RSEM_recall,Salmon_align_recall, Updated_Salmon_align_recall, Salmon_quasi_recall, Salmon_SMEM_recall, Sailfish_recall, eXpress_recall, Kallisto_recall))
+recall_data<-melt(rbind(RSEM_recall,Salmon_align_recall,  Salmon_quasi_recall, Salmon_SMEM_recall, Sailfish_recall, eXpress_recall, Kallisto_recall))
 
 ###############################################################
 # F1 PLOTS
@@ -249,9 +246,8 @@ Salmon_SMEM_F1<-find_F1(Salmon_SMEM_precision, Salmon_SMEM_recall)
 Sailfish_F1<-find_F1(Sailfish_precision, Sailfish_recall)
 eXpress_F1<-find_F1(eXpress_precision, eXpress_recall)
 Kallisto_F1<-find_F1(Kallisto_precision, Kallisto_recall)
-Updated_Salmon_align_F1<-find_F1(Updated_Salmon_align_precision, Updated_Salmon_align_recall)
 
-F1_data<-melt(rbind(RSEM_F1,Salmon_align_F1, Updated_Salmon_align_F1, Salmon_quasi_F1, Salmon_SMEM_F1, Sailfish_F1, eXpress_F1, Kallisto_F1))
+F1_data<-melt(rbind(RSEM_F1,Salmon_align_F1, Salmon_quasi_F1, Salmon_SMEM_F1, Sailfish_F1, eXpress_F1, Kallisto_F1))
 
 F1_data$Var2<-as.character(F1_data$Var2)
 precision_data$Var2<-as.character(precision_data$Var2)

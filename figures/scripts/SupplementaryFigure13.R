@@ -3,6 +3,7 @@ library(ggplot2)
 library(ggpubr)
 library(scater, quietly = TRUE)
 library(knitr)
+library(SingleCellExperiment)
 options(stringsAsFactors = FALSE)
 
 ############################################################
@@ -35,9 +36,10 @@ load("../data/SupplementaryFigure13_scater_object.RData")
 mt_reads<-scater::plotPhenoData(
   dropseq_scater_QC,
   aes_string(x = "total_features",
-             y = "pct_counts_feature_controls_MT",
+             y = "pct_counts_MT",
              colour = "batch")
 )
+
 
 # make final figure
 ggarrange(mt_reads, NumReads, NumAlign, Unique, NonUnique, Unmapped, ncol = 2,nrow=3, labels = c("A","B","C","D","E","F"))

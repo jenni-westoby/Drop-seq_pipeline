@@ -10,7 +10,7 @@ library(ggplot2)
 dropseq_counts<-read.table("data/clean_Kallisto_real_Counts.txt")
 
 ids<-names(dropseq_counts)
-batch<-rep("batch",1000)
+batch<-rep("batch",ncol(dropseq_counts))
 
 anno<- as.data.frame(cbind(batch,ids))
 rownames(anno)<-anno$ids
@@ -40,7 +40,8 @@ dropseq_counts<-dropseq_counts[,colnames(dropseq_counts) %in% dropseq_scater_QC$
 
 #####################################################################################
 # RAW READS QC
-QC_raw<-read.csv("data/raw/read_alignment_qc.csv", header=T)
+QC_raw<-read.csv("data/raw/read_alignment_qc.csv", header=F)
+names(QC_raw)<-c("Filename","Unique","NonUnique","Unmapped","NumAlignments","NumReads")
 QC_raw<-QC_raw[complete.cases(QC_raw),]
 
 #remove cells based on Figure S13
@@ -53,7 +54,7 @@ rm(list=setdiff(ls(), c("QC_raw")))
 dropseq_counts<-read.table("data/clean_ground_truth_Counts.txt")
 
 ids<-names(dropseq_counts)
-batch<-rep("batch",1000)
+batch<-rep("batch",ncol(dropseq_counts))
 
 anno<-as.data.frame(cbind(batch,ids))
 rownames(anno)<-anno$ids
@@ -76,7 +77,8 @@ save(dropseq_scater_QC, file="../figures/data/SupplementaryFigure14_scater_objec
 #####################################################################################
 # SIM READS QC
 
-QC_sim<-read.csv("data/simulated/read_alignment_qc.csv", header=T)
+QC_sim<-read.csv("data/simulated/read_alignment_qc.csv", header=F)
+names(QC_sim)<-c("Filename","Unique","NonUnique","Unmapped","NumAlignments","NumReads")
 QC_sim<-as.data.frame(QC_sim)
 QC_sim$Filename<-sub(".fastq", "", QC_sim$Filename)
 QC_sim<-QC_sim[QC_sim$Filename %in% QC_raw$Filename,]
