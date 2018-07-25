@@ -133,3 +133,6 @@ mkdir demultiplexed_fastqs
 
 #Convert bams to fastqs
 ./convert_bam_to_fastq.sh Dropseq_Alignment_Cookbook/demultiplexed_bams /software/java/bin/java Dropseq_Alignment_Cookbook/picard.jar Dropseq_Alignment_Cookbook/demultiplexed_fastqs
+
+#delete cell which triggered bugs in Salmon and RSEM
+rm demultiplexed_fastqs/CTCGTTTTTTAA.fastq
